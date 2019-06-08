@@ -92,6 +92,10 @@ namespace RA.Api
                     defaults: new { controller = "Home", action = "Index" }
                 );
             });
+
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                serviceScope.ServiceProvider.GetService<MyDbContext>().Database.Migrate();
+
         }
 
         public static void RegisterLayer(IServiceCollection services, IocRegisterDto input, CQRS_TYPE cqrsType)
