@@ -6,12 +6,22 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\build\bin\debug\</OutputPath>
+    <OutputPath>..\..\build\bin\debug\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\build\bin\release\</OutputPath>
+    <OutputPath>..\..\build\bin\release\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".connstr" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include=".connstr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
@@ -25,9 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RA.BusinessService\RA.BusinessService.csproj" />
-    <ProjectReference Include="..\..\RA.IoC\RA.IoC.csproj" />
-    <ProjectReference Include="..\..\RA.Kernel\RA.Kernel.csproj" />
+    <ProjectReference Include="..\RA.BusinessService\RA.BusinessService.csproj" />
+    <ProjectReference Include="..\RA.IoC\RA.IoC.csproj" />
+    <ProjectReference Include="..\RA.Kernel\RA.Kernel.csproj" />
   </ItemGroup>
 
 </Project>
