@@ -8,14 +8,10 @@ using RA.Kernel.DtoObjects;
 
 namespace RA.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ValuesController : AbstractController<OrderDto>, IOrderController
     {
         public ValuesController(IOrderBusinessService orderBusinessService) : base(orderBusinessService)
         {
-
-            IOrderBusinessService orderBusinessSasdce = IoCHelper.Resolve<IOrderBusinessService>();
         }
         // GET api/values
         [HttpGet]

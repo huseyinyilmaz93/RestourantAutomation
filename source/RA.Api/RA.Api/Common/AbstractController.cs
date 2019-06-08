@@ -14,16 +14,19 @@ namespace RA.Api.Common
             _baseBusinessService = baseBusinessService;
         }
 
+        [HttpGet]
         public TDto Add(TDto input)
         {
             return _baseBusinessService.Add(input);
         }
 
+        [HttpGet]
         public void Remove(TDto input)
         {
             _baseBusinessService.Remove(input);
         }
 
+        [HttpGet]
         public TDto Update(TDto input)
         {
             return _baseBusinessService.Add(input);
