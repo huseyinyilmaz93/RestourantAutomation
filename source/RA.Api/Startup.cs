@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -39,7 +41,7 @@ namespace RA.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            RegisterLayerWithConnectionString(services, new IocRegisterDto()
+            RegisterLayer(services, new IocRegisterDto()
             {
                 RegisterInterface = typeof(IQueryOrderRepository),
                 RegisterClass = typeof(QueryOrderRepository),
@@ -47,63 +49,26 @@ namespace RA.Api
                 InterfaceNamespace = "RA.Persistence.Interfaces.",
             }, CQRS_TYPE.None);
 
-            RegisterLayerWithConnectionString(services, new IocRegisterDto()
+            RegisterLayer(services, new IocRegisterDto()
             {
                 RegisterInterface = typeof(IOrderBusinessService),
                 RegisterClass = typeof(OrderBusinessService),
                 ClassNamespace = "RA.BusinessService.BusinessServices.",
                 InterfaceNamespace = "RA.BusinessService.Interfaces.",
-                RegisterInterceptors = new Type[] { }
             }, CQRS_TYPE.None);
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "RA.Api..connstr";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                var connection = reader.ReadToEnd();
+                services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
+            }
 
             services.AddSingleton(typeof(IMapper), MappingFactory.GetMapper());
         }
-
-        public static void RegisterLayerWithConnectionString(IServiceCollection services, IocRegisterDto input, CQRS_TYPE cqrsType)
-        {
-            var interfaces = GetObjectsFromNamespace(input.RegisterInterface, input.InterfaceNamespace, cqrsType);
-
-            var classes = GetObjectsFromNamespace(input.RegisterClass, input.ClassNamespace, cqrsType);
-
-            foreach (Type typeClass in classes)
-            {
-                Type typeInterface = interfaces.Find(x => x.IsAssignableFrom(typeClass));
-                if (typeInterface == null)
-                    continue;
-
-                services.AddTransient(typeInterface, typeClass);
-            }
-        }
-
-        public static void RegisterLayer(IServiceCollection services, IocRegisterDto input, CQRS_TYPE cqrsType)
-        {
-            var interfaces = GetObjectsFromNamespace(input.RegisterInterface, input.InterfaceNamespace, cqrsType);
-
-            var classes = GetObjectsFromNamespace(input.RegisterClass, input.ClassNamespace, cqrsType);
-
-            foreach (Type typeClass in classes)
-            {
-                Type typeInterface = interfaces.Find(x => x.IsAssignableFrom(typeClass));
-                if (typeInterface == null)
-                    continue;
-
-                services.AddTransient(typeClass, typeInterface);
-            }
-        }
-
-        private static List<Type> GetObjectsFromNamespace(Type objectType, string objectNamespace, CQRS_TYPE cqrsType)
-        {
-            if (cqrsType == CQRS_TYPE.None)
-                return objectType.Assembly.GetExportedTypes()
-               .Where(x => x.FullName.StartsWith(objectNamespace)).ToList();
-
-            return objectType.Assembly.GetExportedTypes()
-               .Where(x => x.FullName.StartsWith(objectNamespace) && x.FullName.Contains(Enum.GetName(typeof(CQRS_TYPE), cqrsType))).ToList();
-        }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -119,7 +84,8 @@ namespace RA.Api
 
             app.UseHttpsRedirection();
 
-            app.UseMvc(routes => {
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
                     name: "default_route",
                     template: "{controller}/{action}/{id?}",
@@ -127,5 +93,32 @@ namespace RA.Api
                 );
             });
         }
+
+        public static void RegisterLayer(IServiceCollection services, IocRegisterDto input, CQRS_TYPE cqrsType)
+        {
+            var interfaces = GetObjectsFromNamespace(input.RegisterInterface, input.InterfaceNamespace, cqrsType);
+
+            var classes = GetObjectsFromNamespace(input.RegisterClass, input.ClassNamespace, cqrsType);
+
+            foreach (Type typeClass in classes)
+            {
+                Type typeInterface = interfaces.Find(x => x.IsAssignableFrom(typeClass));
+                if (typeInterface == null)
+                    continue;
+
+                services.AddTransient(typeInterface, typeClass);
+            }
+        }
+
+        private static List<Type> GetObjectsFromNamespace(Type objectType, string objectNamespace, CQRS_TYPE cqrsType)
+        {
+            if (cqrsType == CQRS_TYPE.None)
+                return objectType.Assembly.GetExportedTypes()
+               .Where(x => x.FullName.StartsWith(objectNamespace)).ToList();
+
+            return objectType.Assembly.GetExportedTypes()
+               .Where(x => x.FullName.StartsWith(objectNamespace) && x.FullName.Contains(Enum.GetName(typeof(CQRS_TYPE), cqrsType))).ToList();
+        }
+
     }
 }
