@@ -127,15 +127,6 @@
     <Compile Include="Common\MyDbContext.cs" />
     <Compile Include="Entities\OrderDetailEntity.cs" />
     <Compile Include="Entities\OrderEntity.cs" />
-    <Compile Include="Migrations\20190608173734_Init.cs" />
-    <Compile Include="Migrations\20190608173734_Init.designer.cs">
-      <DependentUpon>20190608173734_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190608173910_AddMyProperty.cs" />
-    <Compile Include="Migrations\20190608173910_AddMyProperty.designer.cs">
-      <DependentUpon>20190608173910_AddMyProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\MyDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Order\CommandOrderRepository.cs" />
     <Compile Include="Repositories\Order\QueryOrderRepository.cs" />
