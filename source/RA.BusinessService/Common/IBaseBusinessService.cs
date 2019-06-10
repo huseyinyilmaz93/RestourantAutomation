@@ -1,14 +1,23 @@
 ﻿using RA.Kernel.Common;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace RA.BusinessService.Common
 {
-    public interface IBaseBusinessService<TDto>
-        where TDto : BaseDto
+    public interface IBaseBusinessService<TEntity>
+        where TEntity : BaseEntity
     {
-        TDto Add(TDto input);
+        TEntity Get(int id);
 
-        TDto Update(TDto input);
+        TEntity Get(Expression<Func<TEntity, bool>> expression);
 
-        void Remove(TDto input);
+        IQueryable<TEntity> GetList();
+
+        IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> expression);
+
+        TEntity Save(TEntity input);
+
+        void Remove(int id);
     }
 }

@@ -1,14 +1,19 @@
-﻿using RA.Kernel.Common;
+﻿using Microsoft.AspNetCore.Mvc;
+using RA.Kernel.Common;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RA.Api.Common
 {
-    public interface IController<TDto>
-        where TDto : BaseDto
+    public interface IController<TEntity>
+        where TEntity : BaseEntity
     {
-        TDto Add(TDto input);
+        Task<ActionResult<TEntity>> Get(int id);
 
-        TDto Update(TDto input);
+        Task<ActionResult<IList<TEntity>>> GetList();
 
-        void Remove(TDto input);
+        Task<ActionResult<TEntity>> Save(TEntity input);
+
+        Task<ActionResult> Remove(int id);
     }
 }

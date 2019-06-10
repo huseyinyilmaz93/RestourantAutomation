@@ -1,36 +1,39 @@
-﻿using AutoMapper;
-using RA.Kernel.Common;
+﻿using RA.Kernel.Common;
 using RA.Persistence.Interfaces;
+using System;
 
 namespace RA.Persistence.Mssql.Common
 {
-    public abstract class AbstractCommandUnitOfWorkRepository<TDto, TEntity> : ICommandUnitOfWorkRepository<TDto>
-        where TDto : BaseDto
+    public abstract class AbstractCommandUnitOfWorkRepository<TEntity> : ICommandUnitOfWorkRepository<TEntity>
         where TEntity : BaseEntity
     {
-        public IMapper _mapper { get; set; }
+        private readonly MyDbContext _context;
 
-        private MyDbContext _context { get; set; }
-
-        public AbstractCommandUnitOfWorkRepository(IMapper mapper, MyDbContext context)
+        public AbstractCommandUnitOfWorkRepository(MyDbContext context)
         {
-            _mapper = mapper;
             _context = context;
         }
 
-        public TDto Add(TDto dto)
+        public TEntity Add(TEntity entity)
         {
-            return _mapper.Map<TDto>(_context.Add(_mapper.Map<TEntity>(dto)).Entity);
+            entity.CreatedDate = DateTime.Now;
+            TEntity saved = _context.Add(entity).Entity;
+            _context.SaveChanges();
+            return saved;
         }
 
-        public void Remove(TDto dto)
+        public TEntity Update(TEntity entity)
         {
-            //return _context.Remove(};
+            entity.ModifiedDate = DateTime.Now;
+            TEntity saved = _context.Update(entity).Entity;
+            _context.SaveChanges();
+            return saved;
         }
 
-        public TDto Update(TDto dto)
+        public void Remove(int id)
         {
-            return _mapper.Map<TDto>(_context.Update(_mapper.Map<TEntity>(dto)).Entity);
+            _context.Remove(new BaseEntity() { Id = id });
+            _context.SaveChanges();
         }
     }
 }

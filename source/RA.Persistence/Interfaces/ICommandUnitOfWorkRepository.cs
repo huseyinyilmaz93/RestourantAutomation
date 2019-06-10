@@ -2,13 +2,13 @@
 
 namespace RA.Persistence.Interfaces
 {
-    public interface ICommandUnitOfWorkRepository<TDto>
-        where TDto : BaseDto
+    public interface ICommandUnitOfWorkRepository<TEntity>
+        where TEntity : BaseEntity
     {
-        TDto Add(TDto dto);
+        TEntity Add(TEntity dto);
 
-        TDto Update(TDto dto);
+        TEntity Update(TEntity dto);
 
-        void Remove(TDto dto);
+        void Remove(int id);
     }
 }

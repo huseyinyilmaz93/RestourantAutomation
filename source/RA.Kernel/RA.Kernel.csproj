@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,10 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Common\BaseDto.cs" />
-    <Compile Include="DtoObjects\OrderDetailDto.cs" />
-    <Compile Include="DtoObjects\OrderDto.cs" />
+    <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Entities\OrderDetailEntity.cs" />
+    <Compile Include="Entities\OrderEntity.cs" />
     <Compile Include="Enumeration\Common\CQRS_TYPE.cs" />
     <Compile Include="HelperDto\IocRegisterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

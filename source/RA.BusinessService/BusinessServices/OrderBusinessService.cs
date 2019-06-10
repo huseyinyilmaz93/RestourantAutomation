@@ -1,12 +1,11 @@
 ﻿using RA.BusinessService.Common;
 using RA.BusinessService.Interfaces;
-using RA.Kernel.DtoObjects;
-using RA.Persistence.Interfaces;
+using RA.Kernel.Entities;
 using RA.Persistence.Interfaces.Order;
 
 namespace RA.BusinessService.BusinessServices
 {
-    public class OrderBusinessService : AbstractBusinessService<OrderDto>, IOrderBusinessService
+    public class OrderBusinessService : AbstractBusinessService<OrderEntity>, IOrderBusinessService
     {
         public IQueryOrderRepository _queryOrderRepository { get; set; }
 

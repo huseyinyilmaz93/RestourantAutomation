@@ -3,24 +3,24 @@ using RA.Persistence.Interfaces;
 
 namespace RA.Persistence.Mssql.Common
 {
-    public abstract class AbstractCommandRepository<TDto> : IBaseCommandRepository<TDto>
-        where TDto : BaseDto
+    public abstract class AbstractCommandRepository<TTEntity> : IBaseCommandRepository<TTEntity>
+        where TTEntity : BaseEntity
     {
-        public ICommandUnitOfWorkRepository<TDto> _unitofWork { get; set; }
+        public ICommandUnitOfWorkRepository<TTEntity> _unitofWork { get; set; }
 
-        public TDto Add(TDto input)
+        public TTEntity Add(TTEntity input)
         {
             return _unitofWork.Add(input);
         }
 
-        public void Remove(TDto input)
-        {
-            _unitofWork.Remove(input);
-        }
-
-        public TDto Update(TDto input)
+        public TTEntity Update(TTEntity input)
         {
             return _unitofWork.Update(input);
+        }
+
+        public void Remove(int id)
+        {
+            _unitofWork.Remove(id);
         }
     }
 }

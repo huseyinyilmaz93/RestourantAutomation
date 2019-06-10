@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using RA.Api.Common;
 using RA.Api.Interfaces;
 using RA.BusinessService.Interfaces;
-using RA.IoC.Container;
-using RA.Kernel.DtoObjects;
+using RA.Kernel.Entities;
 
 namespace RA.Api.Controllers
 {
-    public class ValuesController : AbstractController<OrderDto>, IOrderController
+    public class ValuesController : AbstractController<OrderEntity>, IOrderController
     {
         public ValuesController(IOrderBusinessService orderBusinessService) : base(orderBusinessService)
         {
@@ -22,7 +21,7 @@ namespace RA.Api.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public new ActionResult<string> Get(int id)
         {
             return "value";
         }

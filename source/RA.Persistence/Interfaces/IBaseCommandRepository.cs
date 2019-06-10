@@ -6,6 +6,6 @@
 
         TDto Update(TDto input);
 
-        void Remove(TDto input);
+        void Remove(int id);
     }
 }

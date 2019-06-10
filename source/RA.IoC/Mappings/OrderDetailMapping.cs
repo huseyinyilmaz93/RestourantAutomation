@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using RA.Kernel.DtoObjects;
-using RA.Persistence.Mssql.Entities;
 
 namespace RA.IoC.Mappings
 {
@@ -8,7 +6,6 @@ namespace RA.IoC.Mappings
     {
         public OrderDetailMapping()
         {
-            CreateMap<OrderDetailDto, OrderDetailEntity>().ReverseMap();
         }
     }
 }
