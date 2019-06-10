@@ -1,35 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using RA.BusinessService.Common;
 using RA.Kernel.Common;
 
 namespace RA.Api.Common
 {
-    public class AbstractController<TDto> : ControllerBase,  IController<TDto>
-        where TDto : BaseDto
+    public class AbstractController<TEntity> : ControllerBase,  IController<TEntity>
+        where TEntity : BaseEntity
     {
-        private IBaseBusinessService<TDto> _baseBusinessService { get; set; }
+        private IBaseBusinessService<TEntity> _baseBusinessService { get; set; }
 
-        public AbstractController(IBaseBusinessService<TDto> baseBusinessService)
+        public AbstractController(IBaseBusinessService<TEntity> baseBusinessService)
         {
             _baseBusinessService = baseBusinessService;
         }
 
+
         [HttpGet]
-        public TDto Add(TDto input)
+        public async Task<ActionResult<TEntity>> Get(int id)
         {
-            return _baseBusinessService.Add(input);
+            return await Task.FromResult(_baseBusinessService.Get(id));
         }
 
         [HttpGet]
-        public void Remove(TDto input)
+        public async Task<ActionResult<IList<TEntity>>> GetList()
         {
-            _baseBusinessService.Remove(input);
+            return await Task.FromResult(_baseBusinessService.GetList().ToList());
         }
 
-        [HttpGet]
-        public TDto Update(TDto input)
+        [HttpPost]
+        public async Task<ActionResult<TEntity>> Save(TEntity input)
         {
-            return _baseBusinessService.Add(input);
+            return await Task.FromResult(_baseBusinessService.Save(input));
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> Remove(int id)
+        {
+            _baseBusinessService.Remove(id);
+            return await Task.FromResult(Ok());
+        }
+
     }
 }

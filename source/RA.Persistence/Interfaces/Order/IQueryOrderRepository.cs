@@ -1,8 +1,8 @@
-﻿using RA.Kernel.DtoObjects;
+﻿using RA.Kernel.Entities;
 
 namespace RA.Persistence.Interfaces.Order
 {
-    public interface IQueryOrderRepository : IBaseQueryRepository<OrderDto>
+    public interface IQueryOrderRepository : IBaseQueryRepository<OrderEntity>
     {
     }
 }

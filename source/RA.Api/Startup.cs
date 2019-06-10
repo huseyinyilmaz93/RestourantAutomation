@@ -117,11 +117,9 @@ namespace RA.Api
         private static List<Type> GetObjectsFromNamespace(Type objectType, string objectNamespace, CQRS_TYPE cqrsType)
         {
             if (cqrsType == CQRS_TYPE.None)
-                return objectType.Assembly.GetExportedTypes()
-               .Where(x => x.FullName.StartsWith(objectNamespace)).ToList();
+                return objectType.Assembly.GetExportedTypes().Where(x => x.FullName.StartsWith(objectNamespace)).ToList();
 
-            return objectType.Assembly.GetExportedTypes()
-               .Where(x => x.FullName.StartsWith(objectNamespace) && x.FullName.Contains(Enum.GetName(typeof(CQRS_TYPE), cqrsType))).ToList();
+            return objectType.Assembly.GetExportedTypes().Where(x => x.FullName.StartsWith(objectNamespace) && x.FullName.Contains(Enum.GetName(typeof(CQRS_TYPE), cqrsType))).ToList();
         }
 
     }

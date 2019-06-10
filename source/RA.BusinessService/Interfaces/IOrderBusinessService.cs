@@ -1,9 +1,9 @@
 ﻿using RA.BusinessService.Common;
-using RA.Kernel.DtoObjects;
+using RA.Kernel.Entities;
 
 namespace RA.BusinessService.Interfaces
 {
-    public interface IOrderBusinessService : IBaseBusinessService<OrderDto>
+    public interface IOrderBusinessService : IBaseBusinessService<OrderEntity>
     {
     }
 }

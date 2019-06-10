@@ -3,38 +3,59 @@ using RA.Persistence.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RA.BusinessService.Common
 {
-    public class AbstractBusinessService<TDto> : IBaseBusinessService<TDto>
-        where TDto : BaseDto
+    public class AbstractBusinessService<TEntity> : IBaseBusinessService<TEntity>
+        where TEntity : BaseEntity
     {
-        private IBaseQueryRepository<TDto> _baseQueryRepository;
+        private IBaseQueryRepository<TEntity> _baseQueryRepository;
 
-        private IBaseCommandRepository<TDto> _baseCommandRepository;
+        private IBaseCommandRepository<TEntity> _baseCommandRepository;
 
-        public AbstractBusinessService(IBaseQueryRepository<TDto> baseQueryRepository,
-                                       IBaseCommandRepository<TDto> baseCommandRepository)
+        public AbstractBusinessService(IBaseQueryRepository<TEntity> baseQueryRepository,
+                                       IBaseCommandRepository<TEntity> baseCommandRepository)
         {
             _baseQueryRepository = baseQueryRepository;
             _baseCommandRepository = baseCommandRepository;
         }
 
-        public TDto Add(TDto input)
+
+        public TEntity Get(int id)
         {
-            return _baseCommandRepository.Add(input);
+            return _baseQueryRepository.Get(id);
         }
 
-        public void Remove(TDto input)
+        public TEntity Get(Expression<Func<TEntity, bool>> expression)
         {
-            _baseCommandRepository.Remove(input);
+            return _baseQueryRepository.Get(expression);
         }
 
-        public TDto Update(TDto input)
+        public IQueryable<TEntity> GetList()
         {
-            return _baseCommandRepository.Update(input);
+            return _baseQueryRepository.GetList();
         }
+
+        public IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> expression)
+        {
+            return _baseQueryRepository.GetList(expression);
+        }
+
+        public TEntity Save(TEntity input)
+        {
+            return (input.Id == 0)
+                ? _baseCommandRepository.Add(input)
+                : _baseCommandRepository.Update(input);
+                
+        }
+
+        public void Remove(int id)
+        {
+            _baseCommandRepository.Remove(id);
+        }
+
     }
 }

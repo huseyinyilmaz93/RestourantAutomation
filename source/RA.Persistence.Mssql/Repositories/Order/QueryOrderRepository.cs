@@ -1,11 +1,14 @@
-﻿using RA.Kernel.DtoObjects;
+﻿using RA.Kernel.Entities;
 using RA.Persistence.Interfaces.Order;
 using RA.Persistence.Mssql.Common;
-using RA.Persistence.Mssql.Entities;
 
 namespace RA.Persistence.Mssql.Repositories.Order
 {
-    public class QueryOrderRepository : AbstractQueryUnitOfWorkRepository<OrderDto, OrderEntity>, IQueryOrderRepository
+    public class QueryOrderRepository : AbstractQueryRepository<OrderEntity>, IQueryOrderRepository
     {
+        public QueryOrderRepository(MyDbContext context) : base(context)
+        {
+
+        }
     }
 }

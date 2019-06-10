@@ -41,10 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\BaseEntity.cs" />
     <Compile Include="Interfaces\IBaseCommandRepository.cs" />
     <Compile Include="Interfaces\IBaseQueryRepository.cs" />
-    <Compile Include="Interfaces\IQueryUnitOfWorkRepository.cs" />
     <Compile Include="Interfaces\ICommandUnitOfWorkRepository.cs" />
     <Compile Include="Interfaces\Order\ICommandOrderRepository.cs" />
     <Compile Include="Interfaces\Order\IQueryOrderRepository.cs" />

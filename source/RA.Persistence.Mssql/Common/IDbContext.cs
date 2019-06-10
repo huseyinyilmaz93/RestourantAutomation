@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RA.Persistence.Mssql.Entities;
+using RA.Kernel.Entities;
 
 namespace RA.Persistence.Mssql.Common
 {
