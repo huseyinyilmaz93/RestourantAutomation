@@ -1,9 +1,58 @@
 ﻿<Application x:Class="RA.WindowsClient.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:RA.WindowsClient"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+
+                <!-- Material Design -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+
+                <!-- Dragablz Material Design -->
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
+
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Dragablz Material Design -->
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+
+            
+            <sys:Double x:Key="btnHeight" >95</sys:Double>
+            <sys:Double x:Key="btnWidth" >145</sys:Double>
+            <sys:Double x:Key="btnFontSize" >25</sys:Double>
+            
+            <LinearGradientBrush x:Key="GradientBg" StartPoint="0, 1" EndPoint="0, 0">
+                <GradientStop Color="{StaticResource Primary500}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource Accent700}" Offset="0"/>
+            </LinearGradientBrush>
+
+
+            <Style x:Key="LoginKeyPadStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                <Setter Property="FontSize" Value="{StaticResource btnFontSize}"/>
+                <Setter Property="Width" Value="{StaticResource btnWidth}"/>
+                <Setter Property="Height" Value="{StaticResource btnHeight}"/>
+        
+            </Style>
+
+
+            <Style x:Key="LoginKeyPadTextStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource btnFontSize}" />
+
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
