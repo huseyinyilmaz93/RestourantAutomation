@@ -9,5 +9,7 @@ namespace RA.Persistence.Mssql.Repositories.User
         public CommandUserRepository(MyDbContext context) : base(context)
         {
         }
+
+
     }
 }

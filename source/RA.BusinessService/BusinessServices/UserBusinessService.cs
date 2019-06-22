@@ -17,5 +17,9 @@ namespace RA.BusinessService.BusinessServices
             _commandUserRepository = commandUserRepository;
         }
 
+        public UserEntity Login(UserEntity user)
+        {
+            return _queryUserRepository.Get(u => u.Pin == user.Pin);
+        }
     }
 }

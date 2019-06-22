@@ -5,5 +5,6 @@ namespace RA.BusinessService.Interfaces
 {
     public interface IUserBusinessService : IBaseBusinessService<UserEntity>
     {
+        UserEntity Login(UserEntity user);
     }
 }
