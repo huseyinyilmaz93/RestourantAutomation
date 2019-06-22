@@ -48,6 +48,7 @@
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Enumeration\Common\CQRS_TYPE.cs" />
     <Compile Include="Enumeration\User\UserType.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="HelperDto\IocRegisterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

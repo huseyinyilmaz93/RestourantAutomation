@@ -125,5 +125,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RA.Kernel\RA.Kernel.csproj">
+      <Project>{F545D9A6-93FE-497A-BC9D-039923944938}</Project>
+      <Name>RA.Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RA.WindowsConnector\RA.WindowsConnector.csproj">
+      <Project>{D7D679A2-D733-43E4-A269-43955228BB39}</Project>
+      <Name>RA.WindowsConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

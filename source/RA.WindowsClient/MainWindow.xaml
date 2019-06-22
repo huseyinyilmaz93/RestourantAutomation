@@ -9,8 +9,9 @@
         xmlns:local="clr-namespace:RA.WindowsClient"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" 
-        Width="800">
+        WindowState="Maximized"
+        Height="800" 
+        Width="1000">
 
     <mah:MetroWindow.Resources>
         <ResourceDictionary>
@@ -48,7 +49,7 @@
                 Grid.ColumnSpan="3"
                 Width="450"
                 Height="90"
-                Style="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}"
+                Style="{StaticResource PasswordBoxStyle}"
                 VerticalAlignment="Top"
                 FontSize="{StaticResource btnFontSize}"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
@@ -180,7 +181,7 @@
                     Grid.Row="4"
                     Grid.Column="2"
                     Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
+                    Click="Login_Click"
                     ToolTip="0">
 
                     <TextBlock

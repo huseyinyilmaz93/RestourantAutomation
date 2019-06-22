@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -43,6 +44,11 @@
                 <Setter Property="Foreground" Value="Black" />
                 <Setter Property="FontSize" Value="{StaticResource btnFontSize}" />
 
+            </Style>
+
+            <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}">
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="Gray" />
+                <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Gray" />
             </Style>
 
         </ResourceDictionary>

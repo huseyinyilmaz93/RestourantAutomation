@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using RA.Kernel.Entities;
+using RA.WindowsConnector.ConnectorInterfaces;
+using RA.WindowsConnector.Conntectors;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RA.WindowsClient
@@ -26,6 +29,16 @@ namespace RA.WindowsClient
         {
             if (txtPassword.Password.Length != 0)
                 txtPassword.Password = txtPassword.Password.Substring(0, txtPassword.Password.Length - 1);
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            IUserWindowsConnector userWindowsConnector = new UserWindowsConnector();
+
+            var a = userWindowsConnector.Login(new UserEntity
+            {
+                Pin = txtPassword.Password,
+            });
         }
     }
 }

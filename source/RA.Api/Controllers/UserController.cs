@@ -17,7 +17,7 @@ namespace RA.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserEntity>> Login(UserEntity user)
+        public async Task<ActionResult<UserEntity>> Login([FromBody]UserEntity user)
         {
             UserEntity entity = _userBusinessService.Login(user);
             if (entity == null)

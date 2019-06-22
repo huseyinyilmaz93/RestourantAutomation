@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{C32CF9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.WindowsClient", "RA.WindowsClient\RA.WindowsClient.csproj", "{BE7009AA-F2A8-4373-BAD5-7DB7896E3780}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.WindowsConnector", "RA.WindowsConnector\RA.WindowsConnector.csproj", "{D7D679A2-D733-43E4-A269-43955228BB39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,12 +63,17 @@ Global
 		{BE7009AA-F2A8-4373-BAD5-7DB7896E3780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7009AA-F2A8-4373-BAD5-7DB7896E3780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE7009AA-F2A8-4373-BAD5-7DB7896E3780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D679A2-D733-43E4-A269-43955228BB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D679A2-D733-43E4-A269-43955228BB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D679A2-D733-43E4-A269-43955228BB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D679A2-D733-43E4-A269-43955228BB39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BE7009AA-F2A8-4373-BAD5-7DB7896E3780} = {F2FEBBDE-2902-4EA8-84E7-4B446B002DAD}
+		{D7D679A2-D733-43E4-A269-43955228BB39} = {F2FEBBDE-2902-4EA8-84E7-4B446B002DAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BF564FC3-D942-4445-845C-ED86A737EC19}
