@@ -6,9 +6,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:RA.WindowsClient"
+        xmlns:resx="clr-namespace:RA.WindowsClient.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" 
         WindowState="Maximized"
         Height="800" 
         Width="1000">
@@ -47,6 +46,7 @@
                 Grid.Row="0" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="3"
+                PreviewTextInput="HandleDigit"
                 Width="450"
                 Height="90"
                 Style="{StaticResource PasswordBoxStyle}"
@@ -164,7 +164,7 @@
 
                     <TextBlock
                         Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="SİL" />
+                        Text="{Binding Source={x:Static resx:Resource.Delete}}" />
                 </Button>
                 <Button
                     Grid.Row="4"
@@ -186,7 +186,7 @@
 
                     <TextBlock
                         Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="GİRİŞ" />
+                        Text="{Binding Source={x:Static resx:Resource.Login}}" />
                 </Button>
 
             </Grid>

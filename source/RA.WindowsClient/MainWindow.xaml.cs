@@ -1,6 +1,7 @@
 ﻿using RA.Kernel.Entities;
 using RA.WindowsConnector.ConnectorInterfaces;
 using RA.WindowsConnector.Conntectors;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -39,6 +40,15 @@ namespace RA.WindowsClient
             {
                 Pin = txtPassword.Password,
             });
+        }
+
+        private void HandleDigit(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[0-9]+");
+            if (!regex.IsMatch(e.Text))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RA.WindowsClient.Properties;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace RA.WindowsClient
@@ -13,5 +10,9 @@ namespace RA.WindowsClient
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Resource.Culture = Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+        }
     }
 }
