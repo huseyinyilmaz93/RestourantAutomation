@@ -8,5 +8,7 @@ namespace RA.Persistence.Mssql.Common
         DbSet<OrderEntity> OrderEntities { get; set; }
 
         DbSet<OrderDetailEntity> OrderDetailEntities { get; set; }
+
+        DbSet<UserEntity> UserEntities { get; set; }
     }
 }

@@ -45,7 +45,9 @@
     <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Entities\OrderDetailEntity.cs" />
     <Compile Include="Entities\OrderEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Enumeration\Common\CQRS_TYPE.cs" />
+    <Compile Include="Enumeration\User\UserType.cs" />
     <Compile Include="HelperDto\IocRegisterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -94,8 +94,10 @@ namespace RA.Api
             });
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                serviceScope.ServiceProvider.GetService<MyDbContext>().Database.Migrate();
-
+            {
+                MyDbContext context = serviceScope.ServiceProvider.GetService<MyDbContext>();
+                context.Database.EnsureCreated();
+            }
         }
 
         public static void RegisterLayer(IServiceCollection services, IocRegisterDto input, CQRS_TYPE cqrsType)

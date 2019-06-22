@@ -5,7 +5,7 @@ using RA.Kernel.Common;
 
 namespace RA.Kernel.Entities
 {
-    [Table("Order")]
+    [Table("OrderSlip")]
     public class OrderEntity : BaseEntity
     {
         [Required]

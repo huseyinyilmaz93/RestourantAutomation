@@ -46,6 +46,8 @@
     <Compile Include="Interfaces\ICommandUnitOfWorkRepository.cs" />
     <Compile Include="Interfaces\Order\ICommandOrderRepository.cs" />
     <Compile Include="Interfaces\Order\IQueryOrderRepository.cs" />
+    <Compile Include="Interfaces\User\ICommandUserRepository.cs" />
+    <Compile Include="Interfaces\User\IQueryUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
