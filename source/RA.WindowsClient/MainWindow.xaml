@@ -22,21 +22,22 @@
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
-        <Grid Width="450" Height="600" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0">
+        <Border BorderBrush="LightGray" HorizontalAlignment="Right" Background="WhiteSmoke" CornerRadius="1" BorderThickness="1" Width="408" Height="520">
+            <Grid Width="450" Height="580">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="85" />
+                    <RowDefinition Height="90" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150" />
-                    <ColumnDefinition Width="150" />
-                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="135" />
+                    <ColumnDefinition Width="135" />
+                    <ColumnDefinition Width="135" />
                 </Grid.ColumnDefinitions>
 
                 <PasswordBox 
@@ -46,12 +47,13 @@
                 Grid.Column="0" 
                 Grid.ColumnSpan="3"
                 Width="450"
-                Height="100"
+                Height="90"
                 Style="{StaticResource MaterialDesignFilledPasswordFieldPasswordBox}"
                 VerticalAlignment="Top"
                 FontSize="{StaticResource btnFontSize}"
                 IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
                 materialDesign:HintAssist.Hint="PIN" 
+                   
                 />
 
                 <Button
@@ -187,6 +189,8 @@
                 </Button>
 
             </Grid>
+            </Border>
+        
         </Grid>
         
 </mah:MetroWindow>

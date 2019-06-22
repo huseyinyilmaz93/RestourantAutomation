@@ -27,28 +27,20 @@
 
             <!-- Dragablz Material Design -->
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
-
             
-            <sys:Double x:Key="btnHeight" >95</sys:Double>
-            <sys:Double x:Key="btnWidth" >145</sys:Double>
+            <sys:Double x:Key="btnHeight" >80</sys:Double>
+            <sys:Double x:Key="btnWidth" >130</sys:Double>
             <sys:Double x:Key="btnFontSize" >25</sys:Double>
-            
-            <LinearGradientBrush x:Key="GradientBg" StartPoint="0, 1" EndPoint="0, 0">
-                <GradientStop Color="{StaticResource Primary500}" Offset="0.5"/>
-                <GradientStop Color="{StaticResource Accent700}" Offset="0"/>
-            </LinearGradientBrush>
 
-
-            <Style x:Key="LoginKeyPadStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+            <Style x:Key="LoginKeyPadStyle" TargetType="{x:Type Button}" >
                 <Setter Property="FontSize" Value="{StaticResource btnFontSize}"/>
                 <Setter Property="Width" Value="{StaticResource btnWidth}"/>
                 <Setter Property="Height" Value="{StaticResource btnHeight}"/>
-        
+                <Setter Property="Background" Value="LightGray" />
             </Style>
 
-
             <Style x:Key="LoginKeyPadTextStyle" TargetType="{x:Type TextBlock}">
-                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
                 <Setter Property="FontSize" Value="{StaticResource btnFontSize}" />
 
             </Style>
