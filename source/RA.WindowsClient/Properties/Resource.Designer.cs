@@ -70,6 +70,15 @@ namespace RA.WindowsClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Çıkış.
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giriş.
         /// </summary>
         public static string Login {

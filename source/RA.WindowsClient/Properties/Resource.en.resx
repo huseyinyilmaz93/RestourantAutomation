@@ -120,6 +120,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

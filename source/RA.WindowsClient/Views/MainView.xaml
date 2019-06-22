@@ -1,5 +1,4 @@
-﻿    <mah:MetroWindow
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+﻿    <Window
         x:Class="RA.WindowsClient.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,6 +8,7 @@
         xmlns:resx="clr-namespace:RA.WindowsClient.Properties"
         mc:Ignorable="d"
         WindowState="Maximized"
+        WindowStyle="None"
         Height="800" 
         Width="1000">
 
@@ -84,7 +84,7 @@
                 </Button>
                 <Button
                     Grid.Row="2"
-                    Grid.Column="0"
+                    Grid.Column="0"                                             
                     Style="{StaticResource LoginKeyPadStyle}"
                     Click="KeyPad_Click"
                     ToolTip="4">
@@ -181,10 +181,34 @@
                         Style="{StaticResource LoginKeyPadTextStyle}"
                         Text="{Binding Source={x:Static resx:Resource.Login}}" />
                 </Button>
+                <Button
+                    Grid.Row="5"
+                    Opacity="0.8"
+                    Grid.Column="0"
+                    Style="{StaticResource LoginKeyPadStyle}">
+                </Button>
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Style="{StaticResource LoginKeyPadStyle}"
+                    Click="Exit_Click"
+                    ToolTip="0">
+
+                    <TextBlock
+                        Style="{StaticResource LoginKeyPadTextStyle}"
+                        Text="{Binding Source={x:Static resx:Resource.Exit}}" />
+                </Button>
+                
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Opacity="0.8"
+                    Style="{StaticResource LoginKeyPadStyle}">
+                </Button>
 
             </Grid>
             </Border>
         
         </Grid>
         
-</mah:MetroWindow>
+</Window>

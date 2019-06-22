@@ -7,14 +7,15 @@ using System.Windows.Controls;
 
 namespace RA.WindowsClient.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainView
+    public partial class MainView : Window
     {
+        private readonly IUserWindowsConnector userWindowsConnector = null;
+
         public MainView()
         {
             InitializeComponent();
+
+            userWindowsConnector = new UserWindowsConnector();
         }
 
         private void KeyPad_Click(object sender, RoutedEventArgs e)
@@ -34,9 +35,7 @@ namespace RA.WindowsClient.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            IUserWindowsConnector userWindowsConnector = new UserWindowsConnector();
-
-            var a = userWindowsConnector.Login(new UserEntity
+            UserEntity loginResponse = userWindowsConnector.Login(new UserEntity
             {
                 Pin = txtPassword.Password,
             });
@@ -49,6 +48,11 @@ namespace RA.WindowsClient.Views
             {
                 e.Handled = true;
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
