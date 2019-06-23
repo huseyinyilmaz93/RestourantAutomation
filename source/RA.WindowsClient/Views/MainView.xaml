@@ -1,4 +1,4 @@
-﻿    <Window
+﻿<Window
         x:Class="RA.WindowsClient.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,204 +9,230 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
+        Opacity="0"
+        AllowsTransparency="True"  
         Height="800" 
         Width="1000">
 
-        <Grid>
+        <Window.Triggers>
+            <EventTrigger RoutedEvent="Window.Loaded" >
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.2" FillBehavior="HoldEnd">
+                        
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Window.Triggers>
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
-        </Grid.ColumnDefinitions>
-        <Border BorderBrush="LightGray" HorizontalAlignment="Right" Background="WhiteSmoke" CornerRadius="1" BorderThickness="1" Width="408" Height="520">
-            <Grid Width="450" Height="580">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90" />
-                    <RowDefinition Height="85" />
-                    <RowDefinition Height="85" />
-                    <RowDefinition Height="85" />
-                    <RowDefinition Height="85" />
-                    <RowDefinition Height="90" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="135" />
-                    <ColumnDefinition Width="135" />
-                    <ColumnDefinition Width="135" />
-                </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
 
-                <PasswordBox 
-                x:Name="txtPassword"
-                MaxLength="4"
-                Grid.Row="0" 
-                Grid.Column="0" 
-                Grid.ColumnSpan="3"
-                PreviewTextInput="HandleDigit"
-                Width="450"
-                Height="90"
-                Style="{StaticResource PasswordBoxStyle}"
-                VerticalAlignment="Top"
-                FontSize="{StaticResource btnFontSize}"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
-                materialDesign:HintAssist.Hint="PIN" 
+            <Grid Background="LightGray" VerticalAlignment="Top" Height="100" Grid.ColumnSpan="2">
+                <ProgressBar x:Name="progressBar" VerticalAlignment="Bottom" IsIndeterminate="True" Opacity="0" Foreground="Blue" Background="Gray"/>
+            </Grid>
+   
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                <Border BorderBrush="LightGray" HorizontalAlignment="Right" Background="WhiteSmoke" CornerRadius="1" BorderThickness="1" Width="408" Height="520">
+                    <Grid Width="450" Height="580">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90" />
+                            <RowDefinition Height="85" />
+                            <RowDefinition Height="85" />
+                            <RowDefinition Height="85" />
+                            <RowDefinition Height="85" />
+                            <RowDefinition Height="90" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="135" />
+                            <ColumnDefinition Width="135" />
+                            <ColumnDefinition Width="135" />
+                        </Grid.ColumnDefinitions>
+
+                        <PasswordBox 
+                    x:Name="txtPassword"
+                    MaxLength="4"
+                    Grid.Row="0" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="3"
+                    PreviewTextInput="HandleDigit"
+                    Width="450"
+                    Height="90"
+                    Style="{StaticResource PasswordBoxStyle}"
+                    VerticalAlignment="Top"
+                    FontSize="{StaticResource btnFontSize}"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledPasswordFieldPasswordBoxEnabledComboBox}"
+                    materialDesign:HintAssist.Hint="PIN" 
                    
-                />
+                    />
 
-                <Button
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Style="{StaticResource LoginKeyPadStyle}"
+                        <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="1">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="1" />
+                        </Button>
+                        <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="2">
+
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="2" />
+                        </Button>
+                        <Button
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="3">
+
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="3" />
+                        </Button>
+                        <Button
+                        Grid.Row="2"
+                        Grid.Column="0"                                             
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="4">
+
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="4" />
+                        </Button>
+                        <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="5">
+
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="5" />
+                        </Button>
+                        <Button
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="6">
+
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="6" />
+                        </Button>
+                        <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Style="{StaticResource LoginKeyPadStyle}"
                     Click="KeyPad_Click"
-                    ToolTip="1">
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="1" />
-                </Button>
-                <Button
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="2">
+                        ToolTip="7">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="2" />
-                </Button>
-                <Button
-                    Grid.Row="1"
-                    Grid.Column="3"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="3">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="7" />
+                        </Button>
+                        <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="8">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="3" />
-                </Button>
-                <Button
-                    Grid.Row="2"
-                    Grid.Column="0"                                             
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="4">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="8" />
+                        </Button>
+                        <Button
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="9">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="4" />
-                </Button>
-                <Button
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="5">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="9" />
+                        </Button>
+                        <Button
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="DeleteKey_Click"
+                        ToolTip="{Binding Source={x:Static resx:Resource.Delete}}">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="5" />
-                </Button>
-                <Button
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="6">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="{Binding Source={x:Static resx:Resource.Delete}}" />
+                        </Button>
+                        <Button
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="KeyPad_Click"
+                        ToolTip="0">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="6" />
-                </Button>
-                <Button
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                Click="KeyPad_Click"
-                    ToolTip="7">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="0" />
+                        </Button>
+                        <Button
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="Login_Click"
+                        ToolTip="{Binding Source={x:Static resx:Resource.Login}}">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="7" />
-                </Button>
-                <Button
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="8">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="{Binding Source={x:Static resx:Resource.Login}}" />
+                        </Button>
+                        <Button
+                        Grid.Row="5"
+                        Opacity="0.8"
+                        Grid.Column="0"
+                        Style="{StaticResource LoginKeyPadEmptyStyle}">
+                        </Button>
+                        <Button
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Style="{StaticResource LoginKeyPadStyle}"
+                        Click="Exit_Click"
+                        ToolTip="{Binding Source={x:Static resx:Resource.Exit}}">
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="8" />
-                </Button>
-                <Button
-                    Grid.Row="3"
-                    Grid.Column="3"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="9">
+                            <TextBlock
+                            Style="{StaticResource LoginKeyPadTextStyle}"
+                            Text="{Binding Source={x:Static resx:Resource.Exit}}" />
+                        </Button>
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="9" />
-                </Button>
-                <Button
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="DeleteKey_Click"
-                    ToolTip="SİL">
+                        <Button
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Opacity="0.8"
+                        Style="{StaticResource LoginKeyPadEmptyStyle}">
+                        </Button>
 
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="{Binding Source={x:Static resx:Resource.Delete}}" />
-                </Button>
-                <Button
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="KeyPad_Click"
-                    ToolTip="0">
-
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="0" />
-                </Button>
-                <Button
-                    Grid.Row="4"
-                    Grid.Column="2"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="Login_Click"
-                    ToolTip="0">
-
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="{Binding Source={x:Static resx:Resource.Login}}" />
-                </Button>
-                <Button
-                    Grid.Row="5"
-                    Opacity="0.8"
-                    Grid.Column="0"
-                    Style="{StaticResource LoginKeyPadEmptyStyle}">
-                </Button>
-                <Button
-                    Grid.Row="5"
-                    Grid.Column="1"
-                    Style="{StaticResource LoginKeyPadStyle}"
-                    Click="Exit_Click"
-                    ToolTip="0">
-
-                    <TextBlock
-                        Style="{StaticResource LoginKeyPadTextStyle}"
-                        Text="{Binding Source={x:Static resx:Resource.Exit}}" />
-                </Button>
-                
-                <Button
-                    Grid.Row="5"
-                    Grid.Column="2"
-                    Opacity="0.8"
-                    Style="{StaticResource LoginKeyPadEmptyStyle}">
-                </Button>
+                    </Grid>
+                </Border>
 
             </Grid>
-            </Border>
+
+            <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="TrackLight" Height="333" Width="333" Foreground="Gray" HorizontalAlignment="Left"/>
+            </Grid>
         </Grid>
 </Window>

@@ -1,7 +1,9 @@
-﻿using RA.WindowsClient.Properties;
+﻿using RA.WindowsClient.Helpers;
+using RA.WindowsClient.Properties;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace RA.WindowsClient
 {
@@ -17,7 +19,8 @@ namespace RA.WindowsClient
 
         private void Dispatcher_UnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            (this.MainWindow.FindName("progressBar") as ProgressBar).Opacity = 0;
+            MessageHelper.Show("ERR", e.Exception.Message, ShowDialogButtons.OnlyOk);
             e.Handled = true;
         }
     }

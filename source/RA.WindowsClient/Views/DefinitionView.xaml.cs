@@ -39,9 +39,7 @@ namespace RA.WindowsClient.Views
 
         private void ItemSelected(object sender, SelectionChangedEventArgs e)
         {
-            var a = e;
-
-            Show();
+            this.Close();
         }
     }
 }

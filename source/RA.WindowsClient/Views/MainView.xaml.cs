@@ -1,9 +1,14 @@
-﻿using RA.Kernel.Entities;
+﻿using MaterialDesignThemes.Wpf;
+using RA.Kernel.Entities;
+using RA.WindowsClient.Helpers;
+using RA.WindowsClient.UserControls;
 using RA.WindowsConnector.ConnectorInterfaces;
 using RA.WindowsConnector.Conntectors;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace RA.WindowsClient.Views
 {
@@ -14,7 +19,6 @@ namespace RA.WindowsClient.Views
         public MainView()
         {
             InitializeComponent();
-
             userWindowsConnector = new UserWindowsConnector();
         }
 
@@ -35,10 +39,31 @@ namespace RA.WindowsClient.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            progressBar.Opacity = 1;
+
             UserEntity loginResponse = userWindowsConnector.Login(new UserEntity
             {
                 Pin = txtPassword.Password,
             });
+
+            if (loginResponse != null)
+            {
+                DefinitionView view = new DefinitionView();
+                view.Owner = this;
+                if (view.ShowDialog() != null)
+                    txtPassword.Password = string.Empty;
+            }
+            else
+            {
+                MessageHelper.Show("Kullanıcı adı veya şifre yanlış.", "Giriş hatası");
+            }
+
+            progressBar.Opacity = 0;
+        }
+
+        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            
         }
 
         private void HandleDigit(object sender, System.Windows.Input.TextCompositionEventArgs e)
