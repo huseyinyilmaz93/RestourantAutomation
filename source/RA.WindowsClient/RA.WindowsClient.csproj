@@ -85,6 +85,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Views\DefinitionView.xaml.cs">
       <DependentUpon>DefinitionView.xaml</DependentUpon>
     </Compile>
@@ -131,9 +133,7 @@
       <Name>RA.WindowsConnector</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

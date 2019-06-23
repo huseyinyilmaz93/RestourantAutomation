@@ -185,7 +185,7 @@
                     Grid.Row="5"
                     Opacity="0.8"
                     Grid.Column="0"
-                    Style="{StaticResource LoginKeyPadStyle}">
+                    Style="{StaticResource LoginKeyPadEmptyStyle}">
                 </Button>
                 <Button
                     Grid.Row="5"
@@ -203,12 +203,10 @@
                     Grid.Row="5"
                     Grid.Column="2"
                     Opacity="0.8"
-                    Style="{StaticResource LoginKeyPadStyle}">
+                    Style="{StaticResource LoginKeyPadEmptyStyle}">
                 </Button>
 
             </Grid>
             </Border>
-        
         </Grid>
-        
 </Window>
