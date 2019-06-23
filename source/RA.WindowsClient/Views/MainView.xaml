@@ -175,9 +175,13 @@
                         Click="DeleteKey_Click"
                         ToolTip="{Binding Source={x:Static resx:Resource.Delete}}">
 
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="DeleteForever" Height="25" Width="25" VerticalAlignment="Center" Margin="0, 3, 2, 0" Foreground="DarkOrange" />
                             <TextBlock
                             Style="{StaticResource LoginKeyPadTextStyle}"
                             Text="{Binding Source={x:Static resx:Resource.Delete}}" />
+                        </StackPanel>
+
                         </Button>
                         <Button
                         Grid.Row="4"
@@ -197,9 +201,13 @@
                         Click="Login_Click"
                         ToolTip="{Binding Source={x:Static resx:Resource.Login}}">
 
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Login" Height="25" Width="25" VerticalAlignment="Center" Margin="0, 3, 2, 0" Foreground="Green"/>
+                            
                             <TextBlock
                             Style="{StaticResource LoginKeyPadTextStyle}"
                             Text="{Binding Source={x:Static resx:Resource.Login}}" />
+                        </StackPanel>
                         </Button>
                         <Button
                         Grid.Row="5"
@@ -214,9 +222,13 @@
                         Click="Exit_Click"
                         ToolTip="{Binding Source={x:Static resx:Resource.Exit}}">
 
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ExitRun" Height="25" Width="25" VerticalAlignment="Center" Margin="0, 3, 2, 0" Foreground="Red"/>
                             <TextBlock
                             Style="{StaticResource LoginKeyPadTextStyle}"
                             Text="{Binding Source={x:Static resx:Resource.Exit}}" />
+                        </StackPanel>
+                            
                         </Button>
 
                         <Button
