@@ -41,17 +41,33 @@
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
 
+        <Storyboard x:Key="OpenSubElements">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="SubElements">
+                <SplineThicknessKeyFrame  KeyTime="0" Value="65, 100, 0, 0"/>
+                <SplineThicknessKeyFrame  KeyTime="0:0:0.2" Value="300, 100, 0, 0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="CloseSubElements">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="SubElements">
+                <SplineThicknessKeyFrame  KeyTime="0" Value="300, 100, 0, 0"/>
+                <SplineThicknessKeyFrame  KeyTime="0:0:0.2" Value="65, 100, 0, 0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+
     </Window.Resources>
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="OpenLeftMenu" >
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
             <BeginStoryboard Storyboard="{StaticResource OpenMargin}" />
+            <BeginStoryboard Storyboard="{StaticResource OpenSubElements}" />
         </EventTrigger>
 
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CloseLeftMenu" >
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}" />
             <BeginStoryboard Storyboard="{StaticResource CloseMargin}" />
+            <BeginStoryboard Storyboard="{StaticResource CloseSubElements}" />
         </EventTrigger>
         
         <EventTrigger RoutedEvent="Window.Loaded" >
@@ -64,18 +80,21 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
+    
+    
+    
         <Grid>
             
             <Grid Height="100" Background="LightGray" VerticalAlignment="Top">
                 
             </Grid>
-            
+
         <Grid x:Name="DataContent" Margin="70, 100, 0, 0">
             <DataGrid Background="WhiteSmoke" ItemsSource="{Binding Items}">
-                
+
             </DataGrid>
         </Grid>
-        
+
         <Grid x:Name="GridMenu" Width="65" HorizontalAlignment="Left" Background="White">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
@@ -104,7 +123,13 @@
                                 <TextBlock Text="Home" Margin="10, 0, 0, 0" VerticalAlignment="Center"  />
                             </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" ToolTip="Out of Here" Tag="1" Style="{StaticResource ListViewContainerStyle}" >
+                    <ListViewItem MouseDoubleClick="ListViewItem_MouseDoubleClick" Height="60" ToolTip="Users" Tag="1" Style="{StaticResource ListViewContainerStyle}" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Width="50" Height="50" Kind="User" VerticalAlignment="Center"/>
+                            <TextBlock Text="Users" Margin="10, 0, 0, 0" VerticalAlignment="Center"  />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" ToolTip="Out of Here" Tag="2" Style="{StaticResource ListViewContainerStyle}" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Width="50" Height="50" Kind="AboutOutline" VerticalAlignment="Center"/>
                             <TextBlock Text="Out of Here" Margin="10, 0, 0, 0" VerticalAlignment="Center"  />
@@ -113,6 +138,40 @@
                 </ListView>
             </StackPanel>
         </Grid>
-       
+
+        <Border x:Name="SubElements" VerticalAlignment="Bottom" Background="White" BorderBrush="Gray" Height="100" BorderThickness="1 1 1 1" Margin="65,100,0,0">
+            <Grid   >
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+                    <Button
+                    Click="AddButton_Click"
+                      Margin="5,5,5,5"
+                      ToolTip="MaterialDesignFloatingActionDarkButton">
+                        <materialDesign:PackIcon
+                        Kind="Add"
+                        Height="24"
+                        Width="24" />
+                    </Button>
+                    <Button
+                        Click="UpdateButton_Click"
+                        Margin="5,5,5,5"
+                        ToolTip="MaterialDesignFloatingActionDarkButton">
+                        <materialDesign:PackIcon
+                        Kind="Update"
+                        Height="24"
+                        Width="24" />
+                    </Button>
+                    <Button
+                        Click="DeleteButton_Click"
+                        Margin="5,5,5,5"
+                        ToolTip="MaterialDesignFloatingActionDarkButton">
+                        <materialDesign:PackIcon
+                        Kind="Delete"
+                        Height="24"
+                        Width="24" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>

@@ -1,24 +1,24 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using RA.Kernel.Entities;
+using RA.WindowsClient.IoC;
 using RA.WindowsClient.ViewModels;
-using System;
+using RA.WindowsConnector.ConnectorInterfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using RA.WindowsClient.InterfaceHelpers;
+using RA.Kernel.Common;
+using System;
 
 namespace RA.WindowsClient.Views
 {
     public partial class DefinitionView : Window
     {
+        private const string Users = "1";
+        private const string Logout = "2";
+
+        IUserWindowsConnector _userWindowsConnector = IoCHelper.Resolve<IUserWindowsConnector>();
+
         public DefinitionView()
         {
             InitializeComponent();
@@ -39,7 +39,44 @@ namespace RA.WindowsClient.Views
 
         private void ItemSelected(object sender, SelectionChangedEventArgs e)
         {
-            this.Close();
+            if((e.AddedItems[0] as ListViewItem).Tag.ToString().Equals(Users))
+            {
+                Task.Run(() => {
+                    _userWindowsConnector.GetList("/User/GetList")
+                        .Continue(UserListCallBack);
+                });
+            }
+            else if ((e.AddedItems[0] as ListViewItem).Tag.ToString().Equals(Logout))
+            {
+                this.Close();
+            }
+        }
+
+        private void UserListCallBack(Response<IList<UserEntity>> obj)
+        {
+            BaseViewModel<UserEntity> context = new BaseViewModel<UserEntity>();
+            context.Items = obj.Result;
+            DataContext = context;
+        }
+
+        private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Type type = DataContext.GetType();
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

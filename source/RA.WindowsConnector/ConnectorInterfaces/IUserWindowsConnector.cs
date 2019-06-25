@@ -1,9 +1,12 @@
-﻿using RA.Kernel.Entities;
+﻿using RA.Kernel.Common;
+using RA.Kernel.Entities;
+using System;
+using System.Threading.Tasks;
 
 namespace RA.WindowsConnector.ConnectorInterfaces
 {
     public interface IUserWindowsConnector : IWindowsConnector<UserEntity>
     {
-        UserEntity Login(UserEntity input);
+        Response<UserEntity> Login(UserEntity input);
     }
 }

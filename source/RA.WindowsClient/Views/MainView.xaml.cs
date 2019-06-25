@@ -1,25 +1,27 @@
 ﻿using MaterialDesignThemes.Wpf;
+using RA.Kernel.Common;
 using RA.Kernel.Entities;
 using RA.WindowsClient.Helpers;
-using RA.WindowsClient.UserControls;
+using RA.WindowsClient.InterfaceHelpers;
+using RA.WindowsClient.IoC;
 using RA.WindowsConnector.ConnectorInterfaces;
 using RA.WindowsConnector.Conntectors;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace RA.WindowsClient.Views
 {
     public partial class MainView : Window
     {
-        private readonly IUserWindowsConnector userWindowsConnector = null;
+        private readonly IUserWindowsConnector _userWindowsConnector = null;
 
         public MainView()
         {
             InitializeComponent();
-            userWindowsConnector = new UserWindowsConnector();
+            _userWindowsConnector = IoCHelper.Resolve<IUserWindowsConnector>();
         }
 
         private void KeyPad_Click(object sender, RoutedEventArgs e)
@@ -39,31 +41,25 @@ namespace RA.WindowsClient.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            progressBar.Opacity = 1;
-
-            UserEntity loginResponse = userWindowsConnector.Login(new UserEntity
-            {
-                Pin = txtPassword.Password,
+            Task.Run(() => {
+                _userWindowsConnector.Login(new UserEntity
+                {
+                    Pin = txtPassword.Password,
+                }).Continue(LoginCallBack);
             });
+        }
 
-            if (loginResponse != null)
+        private void LoginCallBack(Response<UserEntity> response)
+        {
+            if (response.HasError)
+                MessageHelper.Show("Hata", response.Message, ShowDialogButtons.OnlyOk);
+            else
             {
                 DefinitionView view = new DefinitionView();
                 view.Owner = this;
                 if (view.ShowDialog() != null)
                     txtPassword.Password = string.Empty;
             }
-            else
-            {
-                MessageHelper.Show("Kullanıcı adı veya şifre yanlış.", "Giriş hatası");
-            }
-
-            progressBar.Opacity = 0;
-        }
-
-        private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
-        {
-            
         }
 
         private void HandleDigit(object sender, System.Windows.Input.TextCompositionEventArgs e)
@@ -79,5 +75,7 @@ namespace RA.WindowsClient.Views
         {
             this.Close();
         }
+
+
     }
 }

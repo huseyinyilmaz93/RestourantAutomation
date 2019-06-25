@@ -1,5 +1,8 @@
-﻿using RA.Kernel.Entities;
+﻿using RA.Kernel.Common;
+using RA.Kernel.Entities;
 using RA.WindowsConnector.ConnectorInterfaces;
+using System;
+using System.Threading.Tasks;
 
 namespace RA.WindowsConnector.Conntectors
 {
@@ -7,7 +10,7 @@ namespace RA.WindowsConnector.Conntectors
     {
         public const string POST_LOGIN = "/User/Login";
 
-        public UserEntity Login(UserEntity input)
+        public Response<UserEntity> Login(UserEntity input)
         {
             return base.Post(POST_LOGIN, input);
         }
