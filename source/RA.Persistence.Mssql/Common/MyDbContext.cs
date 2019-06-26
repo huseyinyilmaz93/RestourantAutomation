@@ -20,7 +20,7 @@ namespace RA.Persistence.Mssql.Common
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>().HasData(new UserEntity() { CreatedDate = DateTime.Now, Pin = "1234", UserType = UserType.Admin, Id = 1 });
+            modelBuilder.Entity<UserEntity>().HasData(new UserEntity() { UserName = "admin", CreatedDate = DateTime.Now, Pin = "1234", UserType = UserType.Admin, Id = 1 });
             base.OnModelCreating(modelBuilder);
         }
 

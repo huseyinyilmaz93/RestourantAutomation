@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
@@ -104,10 +107,13 @@
     </Compile>
     <Compile Include="Attributes\ListViewAttribute.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="CustomControls\MyGrid.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="InterfaceHelpers\ResponseExtensions.cs" />
+    <Compile Include="IoC\Factories\MappingFactory.cs" />
     <Compile Include="IoC\Interceptors\ConnectorInterceptor.cs" />
     <Compile Include="IoC\IoCHelper.cs" />
+    <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="UserControls\ShowDialog.xaml.cs">
       <DependentUpon>ShowDialog.xaml</DependentUpon>
     </Compile>

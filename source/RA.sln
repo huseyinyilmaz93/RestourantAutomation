@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.Persistence", "RA.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.Persistence.Mssql", "RA.Persistence.Mssql\RA.Persistence.Mssql.csproj", "{5B9B95ED-333F-4FEB-B14A-D0F832F10F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.ApiService", "RA.ApiService\RA.ApiService.csproj", "{CEB933CF-F32C-4AB1-A9AE-758D9E9BFC32}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA.BusinessService", "RA.BusinessService\RA.BusinessService.csproj", "{CC06F56D-D572-4005-B71D-671F428948EB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RA.Api", "RA.Api\RA.Api.csproj", "{D6E2A676-674D-40AA-B86A-6BC7470B9540}"
@@ -47,10 +45,6 @@ Global
 		{5B9B95ED-333F-4FEB-B14A-D0F832F10F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B9B95ED-333F-4FEB-B14A-D0F832F10F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B9B95ED-333F-4FEB-B14A-D0F832F10F0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEB933CF-F32C-4AB1-A9AE-758D9E9BFC32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEB933CF-F32C-4AB1-A9AE-758D9E9BFC32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEB933CF-F32C-4AB1-A9AE-758D9E9BFC32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEB933CF-F32C-4AB1-A9AE-758D9E9BFC32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC06F56D-D572-4005-B71D-671F428948EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC06F56D-D572-4005-B71D-671F428948EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC06F56D-D572-4005-B71D-671F428948EB}.Release|Any CPU.ActiveCfg = Release|Any CPU

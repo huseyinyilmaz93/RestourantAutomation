@@ -1,4 +1,6 @@
-﻿using RA.WindowsClient.IoC.Interceptors;
+﻿using AutoMapper;
+using RA.WindowsClient.IoC.Factories;
+using RA.WindowsClient.IoC.Interceptors;
 using RA.WindowsConnector.ConnectorInterfaces;
 using RA.WindowsConnector.Conntectors;
 using Unity;
@@ -18,6 +20,7 @@ namespace RA.WindowsClient.IoC
             {
                 _container = new UnityContainer();
                 _container.AddNewExtension<Interception>();
+                _container.RegisterInstance(MappingFactory.GetMapper());
                 _container.RegisterType<IUserWindowsConnector, UserWindowsConnector>(
                         new Interceptor<InterfaceInterceptor>(),
                         new InterceptionBehavior<ConnectorInterceptor>()

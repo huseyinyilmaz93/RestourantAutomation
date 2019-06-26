@@ -6,7 +6,7 @@ namespace RA.WindowsClient.Common
 {
     public class BaseViewModel
     {
-        [ListView("", Visibility.Hidden)]
+        [ListView("Id", Visibility.Visible)]
         public int Id { get; set; }
 
         [ListView("", Visibility.Hidden)]

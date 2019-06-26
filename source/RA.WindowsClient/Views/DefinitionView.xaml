@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:RA.WindowsClient.Views"
-             mc:Ignorable="d" 
+        xmlns:customcontrols="clr-namespace:RA.WindowsClient.CustomControls"
+        mc:Ignorable="d" 
              Opacity="0" 
              AllowsTransparency="True"
              WindowStyle="None"
@@ -80,19 +80,21 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-    
-    
-    
+
         <Grid>
             
             <Grid Height="100" Background="LightGray" VerticalAlignment="Top">
                 
             </Grid>
 
-        <Grid x:Name="DataContent" Margin="70, 100, 0, 0">
-            <DataGrid Background="WhiteSmoke" ItemsSource="{Binding Items}">
-
-            </DataGrid>
+        <Grid Margin="70, 100, 0, 0">
+            <customcontrols:MyGrid x:Name="DataContent" MouseDoubleClick="DataContent_MouseDoubleClick" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Style="{DynamicResource MaterialDesignDataGrid}" Background="WhiteSmoke">
+                <customcontrols:MyGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataContent_MouseDoubleClick"/>
+                    </Style>
+                </customcontrols:MyGrid.Resources>
+            </customcontrols:MyGrid>
         </Grid>
 
         <Grid x:Name="GridMenu" Width="65" HorizontalAlignment="Left" Background="White">
@@ -123,7 +125,7 @@
                                 <TextBlock Text="Home" Margin="10, 0, 0, 0" VerticalAlignment="Center"  />
                             </StackPanel>
                     </ListViewItem>
-                    <ListViewItem MouseDoubleClick="ListViewItem_MouseDoubleClick" Height="60" ToolTip="Users" Tag="1" Style="{StaticResource ListViewContainerStyle}" >
+                    <ListViewItem Height="60" ToolTip="Users" Tag="1" Style="{StaticResource ListViewContainerStyle}" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Width="50" Height="50" Kind="User" VerticalAlignment="Center"/>
                             <TextBlock Text="Users" Margin="10, 0, 0, 0" VerticalAlignment="Center"  />
