@@ -79,6 +79,6 @@ namespace RA.WindowsConnector.Helpers
     public static class HttpClientConstant
     {
         public const string MEDIA_TYPE = "application/json";
-        public const string BASE_ADDRESS = "http://localhost:10000/";
+        public const string BASE_ADDRESS = "http://localhost:9999/";
     }
 }

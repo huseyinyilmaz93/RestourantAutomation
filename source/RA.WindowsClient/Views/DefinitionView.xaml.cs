@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using RA.WindowsClient.InterfaceHelpers;
 using RA.Kernel.Common;
 using System;
+using RA.WindowsClient.UserControls;
 
 namespace RA.WindowsClient.Views
 {
@@ -67,6 +68,9 @@ namespace RA.WindowsClient.Views
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Type type = DataContext.GetType();
+
+            UserSavePopup messageBox = new UserSavePopup();
+            messageBox.ShowDialog();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
