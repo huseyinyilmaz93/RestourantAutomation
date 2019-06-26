@@ -9,6 +9,8 @@ using System.Windows.Controls;
 using RA.WindowsClient.InterfaceHelpers;
 using RA.Kernel.Common;
 using System;
+using RA.WindowsClient.Common;
+using AutoMapper;
 using RA.WindowsClient.UserControls;
 using RA.WindowsClient.Common;
 
@@ -16,15 +18,15 @@ namespace RA.WindowsClient.Views
 {
     public partial class DefinitionView : Window
     {
+        IMapper _mapper = IoCHelper.Resolve<IMapper>();
+        IUserWindowsConnector _userWindowsConnector = IoCHelper.Resolve<IUserWindowsConnector>();
+
         private const string Users = "1";
         private const string Logout = "2";
-
-        IUserWindowsConnector _userWindowsConnector = IoCHelper.Resolve<IUserWindowsConnector>();
 
         public DefinitionView()
         {
             InitializeComponent();
-            DataContext = new OrderViewModel();
         }
 
         private void CloseLeftMenu_Click(object sender, RoutedEventArgs e)
@@ -56,17 +58,15 @@ namespace RA.WindowsClient.Views
 
         private void UserListCallBack(Response<IList<UserEntity>> obj)
         {
-            GenericViewModel<UserEntity> context = new GenericViewModel<UserEntity>();
-            context.Items = obj.Result;
-            DataContext = context;
+            this.DataContent.ItemsSource = _mapper.Map<IList<UserViewModel>>(obj.Result);
         }
 
-        private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             Type type = DataContext.GetType();
 
@@ -74,14 +74,14 @@ namespace RA.WindowsClient.Views
             messageBox.ShowDialog();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DataContent_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            this.UpdateButton_Click(sender, e);
         }
     }
 }
