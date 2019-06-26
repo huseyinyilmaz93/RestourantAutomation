@@ -10,6 +10,7 @@ using RA.WindowsClient.InterfaceHelpers;
 using RA.Kernel.Common;
 using System;
 using RA.WindowsClient.UserControls;
+using RA.WindowsClient.Common;
 
 namespace RA.WindowsClient.Views
 {
@@ -55,7 +56,7 @@ namespace RA.WindowsClient.Views
 
         private void UserListCallBack(Response<IList<UserEntity>> obj)
         {
-            BaseViewModel<UserEntity> context = new BaseViewModel<UserEntity>();
+            GenericViewModel<UserEntity> context = new GenericViewModel<UserEntity>();
             context.Items = obj.Result;
             DataContext = context;
         }
