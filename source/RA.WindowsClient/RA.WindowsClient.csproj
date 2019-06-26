@@ -109,6 +109,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\ComboBoxHelper.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Attributes\ListViewAttribute.cs" />
     <Compile Include="Common\BaseViewModel.cs" />

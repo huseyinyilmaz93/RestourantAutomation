@@ -12,8 +12,9 @@
     TitlebarHeight="30"
     TitleCaps="False"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:resx="clr-namespace:RA.WindowsClient.Properties"
     FontWeight="Bold"
-    Title="USER"
+    Title="{Binding Source={x:Static resx:Resource.UserDefinition}}"
     BorderThickness="3"
     BorderBrush="LightGray"
     WindowTitleBrush="LightGray"
@@ -40,37 +41,28 @@
             <TextBox
                 materialDesign:HintAssist.Foreground="Gray"
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
-                materialDesign:HintAssist.Hint="Username"
+                materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.Username}}"
+                x:Name="txtUsername"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                 Grid.Row="0"
                 Grid.Column="0"/>
 
             <ComboBox
+                x:Name="cbbUserTypes"
                 materialDesign:HintAssist.Foreground="Gray"
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
-                materialDesign:HintAssist.Hint="User Type"
+                materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.UserType}}"
                 IsEditable="True"
                 Width="200"
                 materialDesign:HintAssist.HintOpacity=".26"
                 Grid.Row="1"
                 Grid.Column="0">
-                    <ComboBoxItem>
-                    Apple
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                    Banana
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                    Pear
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Orange
-                    </ComboBoxItem>
+                   
             </ComboBox>
 
             <PasswordBox
                 MaxLength="4"
-                x:Name="FloatingPasswordBox"
+                x:Name="PinPasswordBox"
                 materialDesign:HintAssist.Hint="Pin"
                 materialDesign:HintAssist.Foreground="Gray"
                 PreviewTextInput="HandleDigit"
@@ -81,9 +73,9 @@
                 Grid.Column="0"/>
 
             <PasswordBox
-                x:Name="FloatingPasswordBoxAgain"
+                x:Name="PinPasswordBoxAgain"
                 MaxLength="4"
-                materialDesign:HintAssist.Hint="Pin Again"
+                materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.PinAgain}}"
                 materialDesign:HintAssist.Foreground="Gray"
                 PreviewTextInput="HandleDigit"
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
@@ -101,8 +93,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="btnSave" Content="Save" Grid.Row="1" Style="{StaticResource MessageBoxButtonStyle}" Click="Save_Click" Grid.Column="1" />
-            <Button x:Name="btnCancel" Content="Cancel" Style="{StaticResource MessageBoxButtonStyle}" Click="Cancel_Click" Grid.Row="1" Grid.Column="2"/>
+            <Button x:Name="btnSave" Content="{Binding Source={x:Static resx:Resource.Save}}" Grid.Row="1" Style="{StaticResource MessageBoxButtonStyle}" Click="Save_Click" Grid.Column="1" />
+            <Button x:Name="btnCancel" Content="{Binding Source={x:Static resx:Resource.Cancel}}" Style="{StaticResource MessageBoxButtonStyle}" Click="Cancel_Click" Grid.Row="1" Grid.Column="2"/>
         </Grid>
 
     </Grid>

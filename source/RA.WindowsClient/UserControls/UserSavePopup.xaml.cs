@@ -1,4 +1,7 @@
-﻿using RA.WindowsClient.Helpers;
+﻿using RA.Kernel.Entities;
+using RA.Kernel.Enumeration.User;
+using RA.WindowsClient.Helpers;
+using System;
 using System.Windows;
 
 namespace RA.WindowsClient.UserControls
@@ -8,6 +11,7 @@ namespace RA.WindowsClient.UserControls
         public UserSavePopup()
         {
             InitializeComponent();
+            ComboBoxHelper.BindEnum<UserType>(cbbUserTypes);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -17,7 +21,7 @@ namespace RA.WindowsClient.UserControls
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+        
         }
 
         private void HandleDigit(object sender, System.Windows.Input.TextCompositionEventArgs e)
