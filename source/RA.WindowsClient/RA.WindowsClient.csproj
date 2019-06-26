@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\UserSavePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DefinitionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +106,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Attributes\ListViewAttribute.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
@@ -110,6 +115,9 @@
     <Compile Include="IoC\IoCHelper.cs" />
     <Compile Include="UserControls\ShowDialog.xaml.cs">
       <DependentUpon>ShowDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserSavePopup.xaml.cs">
+      <DependentUpon>UserSavePopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="Common\GenericViewModel.cs" />

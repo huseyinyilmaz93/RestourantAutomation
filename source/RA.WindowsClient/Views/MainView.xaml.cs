@@ -64,11 +64,7 @@ namespace RA.WindowsClient.Views
 
         private void HandleDigit(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[0-9]+");
-            if (!regex.IsMatch(e.Text))
-            {
-                e.Handled = true;
-            }
+            e.Handled = FormHelper.IsLastCharDigit(e.Text);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
