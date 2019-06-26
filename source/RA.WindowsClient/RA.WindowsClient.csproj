@@ -102,6 +102,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Attributes\ListViewAttribute.cs" />
+    <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="InterfaceHelpers\ResponseExtensions.cs" />
     <Compile Include="IoC\Interceptors\ConnectorInterceptor.cs" />
@@ -110,7 +112,8 @@
       <DependentUpon>ShowDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\OrderViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="Common\GenericViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\DefinitionView.xaml.cs">
       <DependentUpon>DefinitionView.xaml</DependentUpon>
     </Compile>
