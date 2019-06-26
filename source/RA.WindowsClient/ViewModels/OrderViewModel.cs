@@ -1,10 +1,11 @@
 ﻿using RA.Kernel.Entities;
+using RA.WindowsClient.Common;
 using System;
 using System.Collections.Generic;
 
 namespace RA.WindowsClient.ViewModels
 {
-    public class OrderViewModel : BaseViewModel<OrderEntity>
+    public class OrderViewModel : GenericViewModel<OrderEntity>
     {
         public OrderViewModel()
         {

@@ -10,9 +10,13 @@ namespace RA.Kernel.Entities
     {
         [Required]
         [StringLength(50)]
-        public string Pin { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         public UserType UserType { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Pin { get; set; }
     }
 }
