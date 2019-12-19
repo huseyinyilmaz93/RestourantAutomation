@@ -124,6 +124,33 @@ namespace RA.WindowsClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pin Tekrar alanı zorunlu..
+        /// </summary>
+        public static string PinAgainRequired {
+            get {
+                return ResourceManager.GetString("PinAgainRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin ve Pin Tekrar alanları eşleşmeli..
+        /// </summary>
+        public static string PinFieldsMustMatch {
+            get {
+                return ResourceManager.GetString("PinFieldsMustMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin alanı zorunlu..
+        /// </summary>
+        public static string PinRequired {
+            get {
+                return ResourceManager.GetString("PinRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kaydet.
         /// </summary>
         public static string Save {
@@ -151,11 +178,29 @@ namespace RA.WindowsClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı adı alanı zorunlu..
+        /// </summary>
+        public static string UserNameRequired {
+            get {
+                return ResourceManager.GetString("UserNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kullanıcı Türü.
         /// </summary>
         public static string UserType {
             get {
                 return ResourceManager.GetString("UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı tipi alanı zorunlu..
+        /// </summary>
+        public static string UserTypeRequired {
+            get {
+                return ResourceManager.GetString("UserTypeRequired", resourceCulture);
             }
         }
     }

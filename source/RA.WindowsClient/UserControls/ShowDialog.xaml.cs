@@ -1,4 +1,6 @@
-﻿namespace RA.WindowsClient.UserControls
+﻿using RA.WindowsClient.Enumerations;
+
+namespace RA.WindowsClient.UserControls
 {
     public partial class ShowDialog
     {
@@ -23,12 +25,5 @@
             Result = ShowDialogResult.OkClick;
             this.Close();
         }
-    }
-
-    public enum ShowDialogResult
-    {
-        Cancelled,
-        CancelClick,
-        OkClick,
     }
 }

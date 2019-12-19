@@ -1,4 +1,5 @@
 ﻿<mah:MetroWindow
+    xmlns:ph="clr-namespace:RA.WindowsClient.Helpers"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     x:Class="RA.WindowsClient.UserControls.UserSavePopup"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -43,7 +44,8 @@
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
                 materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.Username}}"
                 x:Name="txtUsername"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Text="{Binding UserName}"
                 Grid.Row="0"
                 Grid.Column="0"/>
 
@@ -53,6 +55,7 @@
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
                 materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.UserType}}"
                 IsEditable="True"
+                SelectedIndex="{Binding UserType}"
                 Width="200"
                 materialDesign:HintAssist.HintOpacity=".26"
                 Grid.Row="1"
@@ -62,18 +65,20 @@
 
             <PasswordBox
                 MaxLength="4"
-                x:Name="PinPasswordBox"
+                x:Name="txtPin"
                 materialDesign:HintAssist.Hint="Pin"
                 materialDesign:HintAssist.Foreground="Gray"
                 PreviewTextInput="HandleDigit"
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
                 Width="200"
                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                ph:PasswordBoxHelper.BindPassword="true" ph:PasswordBoxHelper.BoundPassword="{Binding Pin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Grid.Row="2"
-                Grid.Column="0"/>
+                Grid.Column="0">
+            </PasswordBox>
 
             <PasswordBox
-                x:Name="PinPasswordBoxAgain"
+                x:Name="txtPinAgain"
                 MaxLength="4"
                 materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:Resource.PinAgain}}"
                 materialDesign:HintAssist.Foreground="Gray"
@@ -81,6 +86,7 @@
                 materialDesign:TextFieldAssist.UnderlineBrush="LightGray"
                 Width="200"
                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                ph:PasswordBoxHelper.BindPassword="true" ph:PasswordBoxHelper.BoundPassword="{Binding PinAgain, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Grid.Row="3"
                 Grid.Column="0"/>
         </Grid>

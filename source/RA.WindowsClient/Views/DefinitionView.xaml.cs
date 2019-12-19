@@ -9,10 +9,8 @@ using System.Windows.Controls;
 using RA.WindowsClient.InterfaceHelpers;
 using RA.Kernel.Common;
 using System;
-using RA.WindowsClient.Common;
 using AutoMapper;
 using RA.WindowsClient.UserControls;
-using RA.WindowsClient.Common;
 
 namespace RA.WindowsClient.Views
 {

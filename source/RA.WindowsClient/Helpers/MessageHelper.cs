@@ -1,4 +1,5 @@
-﻿using RA.WindowsClient.UserControls;
+﻿using RA.WindowsClient.Enumerations;
+using RA.WindowsClient.UserControls;
 using System.Windows;
 
 namespace RA.WindowsClient.Helpers

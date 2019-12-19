@@ -150,4 +150,19 @@
   <data name="UserDefinition" xml:space="preserve">
     <value>USER DEFINITION</value>
   </data>
+  <data name="PinAgainRequired" xml:space="preserve">
+    <value>Pin Again field required.</value>
+  </data>
+  <data name="PinFieldsMustMatch" xml:space="preserve">
+    <value>Pin and Pin Again fields must match.</value>
+  </data>
+  <data name="PinRequired" xml:space="preserve">
+    <value>Pin field required</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>Username field required.</value>
+  </data>
+  <data name="UserTypeRequired" xml:space="preserve">
+    <value>Usertype field required.</value>
+  </data>
 </root>
